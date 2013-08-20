@@ -1,0 +1,20 @@
+{
+    "_id": "string",
+    "detail":{"type": "number", "index": true},
+    "order": {"type": "number", "index": true},
+    "real_order": {"type": "number", "index": true},
+    "parent": "string",
+    "child": "string",
+    "coords": {
+        "x": "number",
+        "y": "number",
+       "z": "number"
+    },
+
+    "uv": {
+        "x": "number",
+        "y": "number"
+    },
+    "neighbors": [{"order": "number", "real_order": "number", "_id": "string"}],
+    "sectors": ["number"]
+}

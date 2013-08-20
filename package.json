@@ -1,0 +1,33 @@
+{
+  "name": "icosahedron",
+  "version": "0.0.1",
+  "description": "read/write point, face and sector data for icosehedrons.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bingomanatee/icosahedron.git"
+  },
+  "keywords": [
+    "three.js",
+    "Icosahedron"
+  ],
+  "author": "Dave Edelhart",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/bingomanatee/icosahedron/issues"
+  },
+  "dependencies": {
+    "three": "~0.58.9",
+    "async": "~0.2.9",
+    "gate": "~0.3.0",
+    "mongoose": "~3.6.17",
+    "underscore": "~1.5.1"
+  },
+  "devDependencies": {
+    "tap": "~0.4.4",
+    "cli-table": "~0.2.0"
+  }
+}

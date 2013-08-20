@@ -1,0 +1,13 @@
+{
+    "_id": "string",
+    "detail": "number",
+    "order": "number",
+
+    "a_id": "string",
+    "b_id": "string",
+    "c_id": "string",
+
+    "a_order": "number",
+    "b_order": "number",
+    "c_order": "number"
+}
