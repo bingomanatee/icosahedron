@@ -1,0 +1,9 @@
+{
+    "_id": "string",
+    "value": {
+        "detail": {"type": "number", "index": true},
+        "count": "number",
+        "to": ["string"]
+    }
+
+}

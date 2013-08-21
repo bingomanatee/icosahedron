@@ -124,9 +124,9 @@ tap.test('ico', {timeout: 1000 * 1000, skip: false }, function (suite) {
 
                     var report_latch = gate.latch();
                     link_test.test('report of points', function (report_test) {
-                        console.log('points 1 after linking');
+                        console.log('points 0 after linking');
 
-                        ico.model.Point().report(1, function (err, table) {
+                        ico.model.Point().report(0, function (err, table) {
                             console.log(table);
 
                             console.log('points 2 after linking');
@@ -143,6 +143,7 @@ tap.test('ico', {timeout: 1000 * 1000, skip: false }, function (suite) {
 
 
                     gate.await(function () {
+                        return;
                         ico.model.drop(function () {
                         });
                     });
