@@ -1,0 +1,55 @@
+var _ = require('underscore');
+var util = require('util');
+var path = require('path');
+var fs = require('fs');
+var humanize = require('humanize');
+
+
+/* ------------ CLOSURE --------------- */
+
+var PLACES = 10;
+
+function _n(n) {
+    return humanize.numberFormat(n, PLACES);
+}
+
+function _d3(coords){
+    return Math.sqrt(coords.x * coords.x + coords.y * coords.y + coords.z * coords.z);
+}
+
+/** ********************
+ * Purpose: to adjust a point to be equidistant from its neighbors
+ */
+
+function eq (callback) {
+    if (!this.equalized_coords) {
+        this.equalized_coords = {};
+    }
+
+    this.eq_coords.x = _.pluck(_.pluck(this.neighbors, 'coords'), 'x').reduce(function (o, x) {
+        return o + x;
+    }, 0);
+    this.eq_coords.y = _.pluck(_.pluck(this.neighbors, 'coords'), 'y').reduce(function (o, y) {
+        return o + y;
+    }, 0);
+    this.eq_coords.z = _.pluck(_.pluck(this.neighbors, 'coords'), 'z').reduce(function (o, z) {
+        return o + z;
+    }, 0);
+
+
+
+    var d = _d3(this.eq_coords);
+    this.eq_coords.x /= d;
+    this.eq_coords.y /= d;
+    this.eq_coords.z /= d;
+
+    console.log('equalizing %s', this._id);
+    console.log('    x from %s to %s (%s)', _n(this.coords.x), _n(this.eq_coords.x), (_n(this.coords.x - this.eq_coords.x)));
+    console.log('    y from %s to %s (%s)', _n(this.coords.y), _n(this.eq_coords.y), (_n(this.coords.y - this.eq_coords.y)));
+    console.log('    z from %s to %s (%s)', _n(this.coords.z), _n(this.eq_coords.z), (_n(this.coords.z - this.eq_coords.z)));
+    this.save(callback);
+}
+
+/* -------------- EXPORT --------------- */
+
+module.exports = eq;

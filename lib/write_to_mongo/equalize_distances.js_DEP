@@ -1,0 +1,82 @@
+var _ = require('underscore');
+var util = require('util');
+var path = require('path');
+var fs = require('fs');
+var async = require('async');
+var Gate = require('gate');
+var THREE = require('three');
+
+var _DEBUG = false;
+
+var DOC_CHUNKS = 5000;
+
+/***********************************
+ *  saves points and faces to mongo.
+ *  Note, connection must be initialized.
+ */
+
+/* ------------ CLOSURE --------------- */
+
+
+/** ********************
+ * Purpose: To save point neighbor data
+ */
+
+function emit_neighbors(done, min_depth, max_depth) {
+    var ico = require('./../../index.js');
+    var Point = ico.model.Point();
+
+    var scripts = [];
+
+    _.range(min_depth, max_depth).forEach(function (detail) {
+        var gate = Gate.create();
+        scripts.push(function (callback) {
+            var stream = Point.find({detail: detail}).stream();
+            stream.on('data', function (point) {
+                var l = gate.latch();
+
+                process.nextTick(function () {
+                    point.equalize(l);
+                })
+            });
+
+            stream.on('close', function () {
+                gate.await(callback);
+            })
+
+        });
+
+    });
+
+
+    _.range(min_depth, max_depth).forEach(function (detail) {
+
+
+        var gate = Gate.create();
+        scripts.push(function (callback) {
+            var stream = Point.find({detail: detail}).stream();
+            stream.on('data', function (point) {
+                var l = gate.latch();
+
+                process.nextTick(function () {
+                    point.post_equalize(l);
+                })
+            });
+
+            stream.on('close', function () {
+                gate.await(callback);
+            })
+
+        });
+
+    });
+
+    async.series(scripts, function () {
+        setTimeout(done, Math.pow(4, max_depth) * 50);
+    });
+
+}
+
+/* -------------- EXPORT --------------- */
+
+module.exports = emit_neighbors;

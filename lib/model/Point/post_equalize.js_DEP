@@ -1,0 +1,31 @@
+var async = require('async');
+
+module.exports = function (callback) {
+    this.coords.x = this.eq_coords.x;
+    this.coords.y = this.eq_coords.y;
+    this.coords.z = this.eq_coords.z;
+
+    var Points = this.model('point');
+    var self = this;
+
+    Points.find({'neighbors._id': this._id}, function (err, points) {
+        async.parallel(points.map(function (point) {
+            return function(done){
+                
+                var self_in_points_neighbors = point.neighbors.id(self._id);
+                if (!self_in_points_neighbors) self_in_points_neighbors = _.find(point.neighbors, function(n){ return n._id == self._id});
+                
+                if (!self_in_points_neighbors){
+                    throw new Error('cannot find self (' + self._id + ') in neighbors of self (' + point._id + ')');
+                }
+                
+                self_in_points_neighbors.coords.x = self.coords.x;
+                self_in_points_neighbors.coords.y = self.coords.y;
+                self_in_points_neighbors.coords.z = self.coords.z;
+                self.markModified('neighbor');
+                self.save(done);
+            }
+        }), callback)
+
+    });
+};

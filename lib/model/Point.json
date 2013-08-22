@@ -1,20 +1,43 @@
 {
     "_id": "string",
-    "detail":{"type": "number", "index": true},
-    "order": {"type": "number", "index": true},
-    "real_order": {"type": "number", "index": true},
+    "detail": {
+        "type": "number",
+        "index": true
+    },
+    "order": {
+        "type": "number",
+        "index": true
+    },
+    "real_order": {
+        "type": "number",
+        "index": true
+    },
     "parent": "string",
     "child": "string",
     "coords": {
         "x": "number",
         "y": "number",
-       "z": "number"
+        "z": "number"
+    },
+    "eq_coords": {
+        "x": "number",
+        "y": "number",
+        "z": "number"
     },
 
     "uv": {
         "x": "number",
         "y": "number"
     },
-    "neighbors": [{"order": "number", "real_order": "number", "_id": "string"}],
+    "neighbors": [{
+        "_id": "string",
+        "coords": {
+            "x": "number",
+            "y": "number",
+            "z": "number"
+        },
+        "real_order": "number",
+        "order": "number"
+    }],
     "sectors": ["number"]
 }

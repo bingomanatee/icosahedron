@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "tap": "~0.4.4",
-    "cli-table": "~0.2.0"
+    "cli-table": "~0.2.0",
+    "humanize": "0.0.8"
   }
 }
