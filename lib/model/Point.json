@@ -19,11 +19,6 @@
         "y": "number",
         "z": "number"
     },
-    "eq_coords": {
-        "x": "number",
-        "y": "number",
-        "z": "number"
-    },
 
     "uv": {
         "x": "number",
