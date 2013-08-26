@@ -3,7 +3,7 @@
  *
  * type
  *
- *   load('/Users/dave/Documents/node/icosahedron/util/drop_test_dbs.js')
+ *   load('/Users/dave/Documents/node/ico/util/drop_test_dbs.js')
  *   (with your absolute file path)
  *
  * in the console.
