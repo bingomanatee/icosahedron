@@ -3,3 +3,6 @@
 /planet_JSON/
 .DS_Store
 /.DS_Store
+/dump/
+/lib/write_to_mongo/code_test.js
+/conn.json
