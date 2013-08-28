@@ -1,6 +1,6 @@
 {
   "name": "icosahedron",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "read/write point, face and sector data for icosehedrons.",
   "main": "index.js",
   "scripts": {
@@ -24,7 +24,8 @@
     "async": "~0.2.9",
     "gate": "~0.3.0",
     "mongoose": "~3.6.17",
-    "underscore": "~1.5.1"
+    "underscore": "~1.5.1",
+    "jsonparse": "0.0.5"
   },
   "devDependencies": {
     "tap": "~0.4.4",
