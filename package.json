@@ -1,6 +1,6 @@
 {
   "name": "icosahedron",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "read/write point, face and sector data for icosehedrons.",
   "main": "index.js",
   "scripts": {
