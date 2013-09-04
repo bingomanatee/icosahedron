@@ -1,3 +1,3 @@
-## 0.0.3
+## 0.0.5
 
-Adding sector data to sector points; useful for determining and reconciling border points 
+Adding sector data to sector points; useful for determining and reconciling border points
