@@ -25,7 +25,9 @@
     "gate": "~0.3.0",
     "mongoose": "~3.6.17",
     "underscore": "~1.5.1",
-    "jsonparse": "0.0.5"
+    "jsonparse": "0.0.5",
+    "cli-table": "~0.2.0",
+    "humanize": "0.0.8"
   },
   "devDependencies": {
     "tap": "~0.4.4",
